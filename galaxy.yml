@@ -2,9 +2,9 @@
 # The namespace of the collection. This can be a company/brand/organization or product namespace under which all
 # content lives. May only contain alphanumeric lowercase characters and underscores. Namespaces cannot start with
 # underscores or numbers and cannot contain consecutive underscores
-namespace: mahdishariat
+namespace: mahdishariatzade
 name: shared_tasks
-version: 1.0.0
+version: 0.0.1
 readme: README.md
 authors:
   - mahdishariat <mahdishariat@outlook.com>
