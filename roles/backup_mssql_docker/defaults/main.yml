@@ -1,2 +1,8 @@
 ---
-# defaults file for backup_mssql_docker
+mssql_container_name: mssql
+mssql_username: sa
+mssql_password: ''
+database_name: master
+compression: true
+medianame: MSSQLBackups
+mssql_hide_sensitive: true

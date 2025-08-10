@@ -16,7 +16,8 @@ tags:
   - restore
   - file_transfer
   - upload_s3
-dependencies: {}
+dependencies:
+  community.docker: '>=3,<4'
 repository: https://github.com/mahdishariatzade/ansible-roles
 documentation: https://github.com/mahdishariatzade/ansible-roles
 homepage: https://github.com/mahdishariatzade/ansible-roles

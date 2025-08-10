@@ -1,0 +1,17 @@
+BACKUP DATABASE [{{ database_name }}]
+    TO DISK = '/var/opt/mssql/backups/backup_mssql_{{ compression | ternary(''compressed'', ''uncompressed'') }}_{{ database_name }}_{{ date_string | default(now(fmt='%s')) }}.bak'
+    WITH FORMAT,
+            MEDIANAME = '{{ medianame | default(''MSSQLBackups'') }}',
+            NAME = 'Full Backup of {{ database_name }}'
+            {% if compression == true -%}
+            ,COMPRESSION
+            {%- endif %}
+            {% if certificate_name is defined -%}
+            ,ENCRYPTION (
+                ALGORITHM = AES_256,
+                SERVER CERTIFICATE = '{{ certificate_name }}'
+            )
+            {%- endif %}
+;
+
+
