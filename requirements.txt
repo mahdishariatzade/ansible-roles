@@ -1,0 +1,4 @@
+ansible>=9,<10
+ansible-lint>=24,<25
+yamllint>=1,<2
+
