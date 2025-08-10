@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Test transfer-files
+  hosts: localhost
   remote_user: root
   roles:
     - transfer-files

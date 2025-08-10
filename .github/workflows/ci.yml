@@ -102,4 +102,3 @@ jobs:
           fi
           echo "Publishing $tarball to Ansible Galaxy..."
           ansible-galaxy collection publish "$tarball" --token "$GALAXY_API_KEY"
-
