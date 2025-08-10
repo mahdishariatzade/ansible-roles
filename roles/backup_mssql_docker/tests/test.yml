@@ -1,0 +1,5 @@
+- name: Test backup_mssql_docker
+  hosts: localhost
+  remote_user: root
+  roles:
+    - mahdishariatzade.shared_tasks.backup_mssql_docker

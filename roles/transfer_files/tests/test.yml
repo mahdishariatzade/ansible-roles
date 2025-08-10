@@ -1,0 +1,5 @@
+- name: Test transfer_files
+  hosts: localhost
+  remote_user: root
+  roles:
+    - mahdishariatzade.shared_tasks.transfer_files

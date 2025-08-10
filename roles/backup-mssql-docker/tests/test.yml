@@ -1,6 +1,0 @@
----
-- name: Test backup-mssql-docker
-  hosts: localhost
-  remote_user: root
-  roles:
-    - backup-mssql-docker

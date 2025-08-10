@@ -1,6 +1,0 @@
----
-- name: Test upload-to-s3
-  hosts: localhost
-  remote_user: root
-  roles:
-    - upload-to-s3

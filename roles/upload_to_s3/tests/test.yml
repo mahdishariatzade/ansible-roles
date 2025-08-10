@@ -1,0 +1,5 @@
+- name: Test upload_to_s3
+  hosts: localhost
+  remote_user: root
+  roles:
+    - mahdishariatzade.shared_tasks.upload_to_s3
