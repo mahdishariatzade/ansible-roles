@@ -5,6 +5,15 @@
     argv: ['mkdir', '-p', '/var/opt/mssql/backups']
   ignore_errors: true
 
+- name: Compute timestamp for backup filename if not provided
+  ansible.builtin.set_fact:
+    date_string: "{{ date_string | default(now(fmt='%s')) }}"
+  when: date_string is not defined
+
+- name: Compute backup file path
+  ansible.builtin.set_fact:
+    backup_file: "/var/opt/mssql/backups/backup_mssql_{{ compression | ternary('compressed', 'not_compressed') }}_{{ database_name }}_{{ date_string }}.bak"
+
 - name: Backup MSSQL Database
   register: backup_result
   no_log: '{{ mssql_hide_sensitive | default(true) }}'

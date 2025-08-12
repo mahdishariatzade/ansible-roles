@@ -1,5 +1,5 @@
 BACKUP DATABASE [{{ database_name }}]
-    TO DISK = '/var/opt/mssql/backups/backup_mssql_{{ compression | ternary('compressed', 'not_compressed') }}_{{ database_name }}_{{ date_string | default(now(fmt='%s')) }}.bak'
+    TO DISK = '{{ backup_file }}'
     WITH FORMAT,
             MEDIANAME = '{{ medianame | default("MSSQLBackups") }}',
             NAME = 'Full Backup of {{ database_name }}'
