@@ -35,6 +35,11 @@ jobs:
         run: ansible-lint .
         continue-on-error: true
 
+      - name: Update version in galaxy.yml
+        run: |
+          VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+          sed -i "s/^version: 0.0.0/version: $VERSION/" galaxy.yml
+
       - name: Build Ansible collection
         run: |
           mkdir -p dist
