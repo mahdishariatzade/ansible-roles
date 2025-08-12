@@ -1,30 +1,26 @@
 ---
 - name: Ensure backup directory exists inside container
   community.docker.docker_container_exec:
-    container: "{{ mssql_container_name }}"
-    argv: ["mkdir", "-p", "/var/opt/mssql/backups"]
+    container: '{{ mssql_container_name }}'
+    argv: ['mkdir', '-p', '/var/opt/mssql/backups']
   ignore_errors: true
 
 - name: Backup MSSQL Database
   register: backup_result
-  no_log: "{{ mssql_hide_sensitive | default(true) }}"
+  no_log: '{{ mssql_hide_sensitive | default(true) }}'
   community.docker.docker_container_exec:
-    container: "{{ mssql_container_name }}"
+    container: '{{ mssql_container_name }}'
     argv:
       - /opt/mssql-tools18/bin/sqlcmd
       - -S
       - localhost
       - -U
-      - "{{ mssql_username }}"
+      - '{{ mssql_username }}'
       - -P
-      - "{{ mssql_password }}"
+      - '{{ mssql_password }}'
       - -C
       - -h-1
       - -Q
       - "{{ lookup('ansible.builtin.template', 'backup_query.j2') }}"
-  failed_when:
-    - "backup database successfully" not in (backup_result.stdout | lower | default(''))
-  changed_when:
-    - "backup database successfully" in (backup_result.stdout | lower | default(''))
-
-
+  failed_when: '"backup database successfully" not in (backup_result.stdout | default("") | lower)'
+  changed_when: '"backup database successfully" in (backup_result.stdout | default("") | lower)'
