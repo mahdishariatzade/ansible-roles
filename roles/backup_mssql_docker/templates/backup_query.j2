@@ -1,5 +1,5 @@
 BACKUP DATABASE [{{ database_name }}]
-    TO DISK = '{{ backup_file }}'
+    TO DISK = '{{backup_dir}}/{{ backup_file }}'
     WITH FORMAT,
             MEDIANAME = '{{ medianame | default("MSSQLBackups") }}',
             NAME = 'Full Backup of {{ database_name }}'

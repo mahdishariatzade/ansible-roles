@@ -5,4 +5,5 @@ mssql_password: ''
 database_name: master
 compression: true
 medianame: MSSQLBackups
+backup_dir: /var/opt/mssql/backups
 mssql_hide_sensitive: true

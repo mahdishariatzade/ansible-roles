@@ -2,7 +2,7 @@
 - name: Ensure backup directory exists inside container
   community.docker.docker_container_exec:
     container: '{{ mssql_container_name }}'
-    argv: ['mkdir', '-p', '/var/opt/mssql/backups']
+    argv: ['mkdir', '-p', '{{backup_dir}}']
   ignore_errors: true
 
 - name: Compute timestamp for backup filename if not provided
@@ -12,7 +12,7 @@
 
 - name: Compute backup file path
   ansible.builtin.set_fact:
-    backup_file: "/var/opt/mssql/backups/backup_mssql_{{ compression | ternary('compressed', 'not_compressed') }}_{{ database_name }}_{{ date_string }}.bak"
+    backup_file: "backup_mssql_{{ compression | ternary('compressed', 'not_compressed') }}_{{ database_name }}_{{ date_string }}.bak"
 
 - name: Backup MSSQL Database
   register: backup_result
