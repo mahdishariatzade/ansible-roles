@@ -9,7 +9,7 @@ BACKUP DATABASE [{{ database_name }}]
             {% if certificate_name is defined -%}
             ,ENCRYPTION (
                 ALGORITHM = AES_256,
-                SERVER CERTIFICATE = '{{ certificate_name }}'
+                SERVER CERTIFICATE = {{ certificate_name }}
             )
             {%- endif -%}
 ;
